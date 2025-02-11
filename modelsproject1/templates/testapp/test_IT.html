@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITjobs</title>
+</head>
+
+<body><a href="/ITjobs">IT Jobs</a>
+    <a href="/Govjobs">Gov Jobs</a><br>
+    <table border="2px">
+        <thead>
+            <th>name</th>
+            <th>location</th>
+            <th>salary</th>
+            <th>eligibility</th>
+            <th>link</th>
+        </thead>
+        {% for i in IT %}
+        <tr>
+            <td>{{i.name}}</td>
+            <td>{{i.location}}</td>
+            <td>{{i.salary}}</td>
+            <td>{{i.eligibility}}</td>
+            <td>{{i.link}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>

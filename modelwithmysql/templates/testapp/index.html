@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+</head>
+<body>
+    <h1>Test</h1>
+    <table border="2px">
+        <thead>
+            <th>empName</th>
+            <th>empID</th>
+            <th>empAddress</th>
+            <th>EmpContact</th>
+        </thead>
+        {% for i in my_dict %}
+        <tr>
+            <td>{{ i.empName }} </td>
+            <td>{{ i.empID }}</td>
+            <td>{{ i.empAddress }}</td>
+            <td>{{ i.empContact }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
