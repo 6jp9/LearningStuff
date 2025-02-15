@@ -12,18 +12,34 @@
 </head>
 
 <body>
-    <div>
-        {% if form %}
-        <form method="post">
+    <div id="fix"><a href="http://127.0.0.1:8000/"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z" />
+            </svg></a></div>
+    
+        {% if movies %}
+        <table border="3px solid" >
+            <thead>
+                <th>Movie Name:</th>
+                <th>Hero</th>
+                <th>Heroine</th>
+                <th>Rating (?/10)</th>
+            </thead>
+            {% for i in movies %}
+            <tr>
+                <td>{{i.name}}</td>
+                <td>{{i.hero}}</td>
+                <td>{{i.heroine}}</td>
+                <td>{{i.rating}}</td>
+            </tr>
+            {% endfor %}
 
-            <!--model data need to be inserted here -->
-
-
-        </form>
-        {% else %}
-        <h1>No Records found</h1>
-        {% endif %}
-    </div>
+            {% else %}
+            <h1>No Records found</h1>
+            {% endif %}
+        </table>
+    <!-- </div> -->
 </body>
 
 </html>

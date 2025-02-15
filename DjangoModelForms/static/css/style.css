@@ -9,7 +9,9 @@ body {
     text-align: center;
     border: 1px solid;
     border-radius: 10px;
+    width: fit-content;
 }
+
 
 #fix {
     position: relative;
