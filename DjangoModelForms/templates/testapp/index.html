@@ -11,12 +11,14 @@
     <title>Document</title>
 </head>
 
-<body align="center">
-    <div>
+<body>
+    <div style="display: block;">
         <h1>Movies Info</h1>
         <a href="/form" class="btn btn-primary">Add Movies</a>
         <a href="/display" class="btn btn-primary">List</a>
-    </div>
+    </div><br>
+    {% block body_block %}
+    {% endblock %}
 </body>
 
 </html>
