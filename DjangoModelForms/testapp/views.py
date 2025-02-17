@@ -2,7 +2,7 @@ from django.shortcuts import render
 # Create your views here.
 from testapp.models import  Movies
 from testapp.forms import MoviesForm
-
+''
 
 # Create your tests here.
 def home(request):
