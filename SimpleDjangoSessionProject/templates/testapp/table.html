@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        th,td{
+        th,
+        td {
             width: 150px;
         }
     </style>
@@ -19,13 +20,17 @@
         {% if request.session %}
         <table border="2">
             <thead>
-            <th>Book Name:</th>
-            <th>Quantity:</th>
-        </thead>
+                <th>Book Name:</th>
+                <th>Quantity:</th>
+            </thead>
+            {% for key,value in request.session.items %}
+            {% if key != '_session_expiry' %}
             <tr>
-                <td>{{name}}</td>
-                <td>{{quantity}}</td>
+                <td>{{key}}</td>
+                <td>{{value}}</td>
             </tr>
+            {% endif %}
+            {% endfor %}
         </table>
         {% else %}
         <h2>No data available</h2>
