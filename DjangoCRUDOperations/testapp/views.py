@@ -19,3 +19,13 @@ def del_data(request,roll):
     temp.delete()
     return redirect('/')
 
+def update_data(request,roll):
+    temp = Std.objects.get(roll=roll)
+    form = InsertForm(instance=temp)
+    if request.method == 'POST':
+        form = InsertForm(request.POST,instance=temp)
+        if form.is_valid():
+            form.save()
+        return redirect('/')
+    return render(request,'testapp/update.html',{'form':form})
+

@@ -24,4 +24,5 @@ urlpatterns = [
     path('', views.home_view),
     path('insert/',views.insert_view),
     path('delete/<int:roll>',views.del_data),
+    path('update/<int:roll>',views.update_data),
 ]
