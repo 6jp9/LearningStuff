@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Test</h1>
+    <h3><a href="/create">+</a></h3>
+    {% for movie in movies_list %}
+    <ul>
+        <li><a href="/{{movie.id}}">Name: <strong>{{movie.name}}</a></strong></li>
+    </ul>
+    {% endfor %}
+
+</body>
+
+</html>
