@@ -10,9 +10,10 @@
 <body>
     <h1>Test</h1>
     <h3><a href="/create">+</a></h3>
+    <h4>Name:</h4>
     {% for movie in movies_list %}
     <ul>
-        <li><a href="/{{movie.id}}">Name: <strong>{{movie.name}}</a></strong></li>
+        <li><a href="/{{movie.id}}"><strong>{{movie.name}}</a></strong></li>
     </ul>
     {% endfor %}
 
