@@ -1,22 +1,53 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Round Image with Circular Hover Menu</title>
+    <link rel="stylesheet" href="{% static 'css/style69.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
-    <h1>Test</h1>
-    <h3><a href="/create">+</a></h3>
-    <h4>Name:</h4>
-    {% for movie in movies_list %}
-    <ul>
-        <li><a href="/{{movie.id}}"><strong>{{movie.name}}</a></strong></li>
-    </ul>
-    {% endfor %}
+    <header id="heading">
 
+        <div id="title">
+            <p><span>J</span>aya <span>P</span>rakash</p>
+        </div>
+
+        <nav id="nav" >
+
+            <section
+                style="border: 1px solid #ccc0be; border-radius: 30px ; width: fit-content;position:relative; left: 500px;">
+                <a href="/create">+</a>
+            </section>
+
+        </nav>
+    </header>
+    <main class="roboto-regular-italic">
+        <div class="main">
+
+            <nav id="nav">
+                <section>
+                    {% for movie in movies_list %}
+
+                    <a href="/{{movie.id}}"><strong>{{movie.name}}</a></strong><br>
+
+                    {% endfor %}
+                </section>
+            </nav>
+
+        </div>
+    </main>
 </body>
 
 </html>
