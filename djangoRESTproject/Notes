@@ -1,0 +1,40 @@
+open shell
+>>> py manage.py shell
+>>> from testapp.models import Movies
+>>> from testapp.serilizer import MoviesSerializer
+ 
+ #serialization (converting model instance(db records) into python dict)
+ #for a single record
+
+>>> movie1 = Movies.objects.get(id=1)
+>>> movie1 #<Movies: Movies object (1)>
+>>> movie1.name #'og'
+>>> movieapi = MoviesSerializer(emp1)
+>>> movieapi.data #{'name': 'og', 'hero': 'pk', 'rating': 10}
+
+#for multiple records
+
+>>> movie_all = Movies.objects.all()
+>>> movies_all #<QuerySet [<Movies: Movies object (1)>, <Movies: Movies object (2)>, <Movies: Movies object (3)>]>
+>>> allmoviesdict = MoviesSerializer(movie_all,many=True)
+>>> allmoviesdict.data #[{'name': 'og', 'hero': 'pk', 'rating': 10}, {'name': 'rajasabh', 'hero': 'prabas', 'rating': 10}, {'name': 'ssmb', 'hero': 'mahesh', 'rating': 10}]
+
+#to convert python Dict into JSON
+
+>>> from rest_framework.renderers import JSONRenderer
+>>> js = JSONRenderer().render(allmoviesdict.data)
+>>> js #b'[{"name":"og","hero":"pk","rating":10},{"name":"rajasabh","hero":"prabas","rating":10},{"name":"ssmb","hero":"mahesh","rating":10}]'
+
+#converting JSON to python dict
+
+>>> import io
+>>> from rest_framework.parsers import JSONParser 
+>>> temp = io.BytesIO(js)
+>>> pdict = JSONParser().parse(temp)
+>>> pdict #[{'name': 'og', 'hero': 'pk', 'rating': 10}, {'name': 'rajasabh', 'hero': 'prabas', 'rating': 10}, {'name': 'ssmb', 'hero': 'mahesh', 'rating': 10}]
+
+#to save the dict contents into model(db)
+
+>>> ser = MoviesSerializer(data=pdict,many=True)
+>>> ser.is_valid() #True
+>>> ser.validated_data #[{'name': 'og', 'hero': 'pk', 'rating': 10}, {'name': 'rajasabh', 'hero': 'prabas', 'rating': 10}, {'name': 'ssmb', 'hero': 'mahesh', 'rating': 10}]
