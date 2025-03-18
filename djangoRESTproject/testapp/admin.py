@@ -3,5 +3,5 @@ from testapp.models import Movies
 
 # Register your models here.
 class MoviesAdmin(admin.ModelAdmin):
-    list_display = ['name','hero','rating']
+    list_display = ['id','name','hero','rating']
 admin.site.register(Movies,MoviesAdmin)
