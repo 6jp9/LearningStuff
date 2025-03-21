@@ -20,8 +20,28 @@ from django.utils.decorators import method_decorator
 
 # Create your views here.
 
-#to delete a record from database by passing id from json
+
+
 class MoviesCURDcbv(View):
+#to update the existing data using put()
+    def put(self,request,*args,**kwargs):
+        tjd = request.body
+        stream = io.BytesIO(tjd)
+        pdata = JSONParser().parse(stream)
+        id = pdata.get('id')
+        movie = Movies.objects.get(id=id)
+        mser = MoviesSerializer(movie,data = pdata, partial=True)
+        if mser.is_valid():
+            mser.save()
+            msg = {'msg':'success!!!'}
+            jd = JSONRenderer().render(msg)
+            return HttpResponse(jd, content_type='application/json')
+        jd = JSONRenderer().render(mser.errors)
+        return HttpResponse(jd, content_type='application/json',status=400)
+        
+
+
+#to delete a record from database by passing id from json
     def delete(self,request,*args,**kwargs):
         js = request.body
         stream = io.BytesIO(js)
@@ -67,4 +87,5 @@ class MoviesCURDcbv(View):
         eser = MoviesSerializer(qs,many=True)
         jd = JSONRenderer().render(eser.data)
         return HttpResponse(jd, content_type='application/json',status=200)
+    
     
