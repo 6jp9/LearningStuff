@@ -30,7 +30,8 @@ class MoviesCURDcbv(View):
         pdata = JSONParser().parse(stream)
         id = pdata.get('id')
         movie = Movies.objects.get(id=id)
-        mser = MoviesSerializer(movie,data = pdata, partial=True)
+        mser = MoviesSerializer(movie,data = pdata, partial=True) #patrial=True to update only certain field,
+                                        #movie carries the record and data=pdata will give what data to update in the record
         if mser.is_valid():
             mser.save()
             msg = {'msg':'success!!!'}
