@@ -44,11 +44,11 @@ END_POINT = 'api/'
 def update_data(id):
     new_dir = {
         'id':id,
-        
-        'rating':10,
+        'name':'OG' ,
+        'rating':7,
     }
     res = requests.put(BASE_URL + END_POINT, data=json.dumps(new_dir))
     print(res.status_code)
     print(res.json())
 
-update_data(3)
+update_data(1)
